@@ -19,6 +19,8 @@ contract MusicPortal {
 
     function getTotalShazams() public view returns (uint256) {
         console.log("We have %d total waves!", totalShazams);
-        return totalShazams;
+
+        uint256 total = totalShazams;
+        return total;
     }
 }
