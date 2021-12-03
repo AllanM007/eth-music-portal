@@ -12,7 +12,13 @@ const main = async () => {
     
     let musicTxn = await musicContract.shazam();
     await musicTxn.wait();
-    
+
+    var shazamer =  randomPerson;
+    console.log(shazamer.address);
+
+    musicTxn = await musicContract.connect(shazamer).shazam();
+    await musicTxn.wait();
+
     musicCount = await musicContract.getTotalShazams();
 };
   

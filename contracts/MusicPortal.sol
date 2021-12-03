@@ -14,7 +14,7 @@ contract MusicPortal {
     
     function shazam() public{
         totalShazams += 1;
-        console.log("A new song has been added", msg.sender);
+        console.log("A new song has been added by:", msg.sender);
     }
 
     function getTotalShazams() public view returns (uint256) {
