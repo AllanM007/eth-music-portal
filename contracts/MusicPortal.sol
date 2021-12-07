@@ -49,10 +49,12 @@ contract MusicPortal {
         emit NewMusic(msg.sender, block.timestamp, _message);
     }
 
-    function getTotalShazams() public view returns (uint256) {
-        console.log("We have %d total waves!", totalShazams);
+    function getAllShazams() public view returns (Music[] memory) {
+        return musics;
+    }
 
-        uint256 total = totalShazams;
-        return total;
+    function getTotalShazams() public view returns (uint256) {
+        console.log("We have %d total shazams!", totalShazams);
+        return totalShazams;
     }
 }
