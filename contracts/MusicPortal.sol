@@ -36,7 +36,7 @@ contract MusicPortal {
     
     function shazam( string memory _message) public{
         totalShazams += 1;
-        console.log("%s waved w/ message %s", msg.sender, _message);
+        console.log("%s shazamed w/ message %s", msg.sender, _message);
         /*
          * This is where I actually store the shazam data in the array.
          */
