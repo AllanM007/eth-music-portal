@@ -25,8 +25,8 @@ contract MusicPortal {
     }
 
     /*
-     * I declare a variable waves that lets me store an array of structs.
-     * This is what lets me hold all the waves anyone ever sends to me!
+     * I declare a variable shazams that lets me store an array of structs.
+     * This is what lets me hold all the shazams anyone ever sends to me!
      */
     Music[] musics;
 
@@ -38,7 +38,7 @@ contract MusicPortal {
         totalShazams += 1;
         console.log("%s waved w/ message %s", msg.sender, _message);
         /*
-         * This is where I actually store the wave data in the array.
+         * This is where I actually store the shazam data in the array.
          */
         musics.push(Music(msg.sender, _message, block.timestamp));
 
