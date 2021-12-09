@@ -1,5 +1,4 @@
 const main = async () => {
-    // const [owner, randomPerson] = await hre.ethers.getSigners();
     const musicContractFactory = await hre.ethers.getContractFactory('MusicPortal');
     const musicContract = await musicContractFactory.deploy({
       value: hre.ethers.utils.parseEther('0.1'),
@@ -18,10 +17,6 @@ const main = async () => {
       hre.ethers.utils.formatEther(contractBalance)
     );
     
-    // let musicCount;
-    // musicCount = await musicContract.getTotalShazams();
-    // console.log(musicCount.toNumber());
-    
     let musicTxn = await musicContract.shazam('https://www.youtube.com/watch?v=O6SeD1xE7NA&ab_channel=VPRecords');
     await musicTxn.wait();
 
@@ -34,9 +29,6 @@ const main = async () => {
      hre.ethers.utils.formatEther(contractBalance)
     )
 
-    // const [_, randomPerson] = await hre.ethers.getSigners();
-    // musicTxn = await musicContract.connect(randomPerson).shazam('https://www.youtube.com/watch?v=O6SeD1xE7NA&ab_channel=VPRecords')
-    // await musicTxn.wait();
     let allShazams = await musicContract.getAllShazams();
     console.log(allShazams);
 };

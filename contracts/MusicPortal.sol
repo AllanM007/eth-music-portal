@@ -30,7 +30,7 @@ contract MusicPortal {
      */
     Music[] musics;
 
-    constructor(){
+    constructor() payable {
         console.log("I am Music Portal Smart Contract");
     }
     

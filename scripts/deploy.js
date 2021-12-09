@@ -1,15 +1,12 @@
 const main = async () => {
-    const [deployer] = await hre.ethers.getSigners();
-    const accountBalance = await deployer.getBalance();
-  
-    console.log('Deploying contracts with account: ', deployer.address);
-    console.log('Account balance: ', accountBalance.toString());
-  
-    const Token = await hre.ethers.getContractFactory('MusicPortal');
-    const portal = await Token.deploy();
-    await portal.deployed();
-  
-    console.log('MusicPortal address: ', portal.address);
+  const musicContractFactory = await hre.ethers.getContractFactory('MusicPortal');
+  const musicContract = await musicContractFactory.deploy({
+    value: hre.ethers.utils.parseEther('0.001'),
+  })
+
+  await musicContract.deployed();
+
+  console.log('MusicPortal address: ', musicContract.address);
   };
   
   const runMain = async () => {
