@@ -20,6 +20,9 @@ const main = async () => {
     let musicTxn = await musicContract.shazam('https://www.youtube.com/watch?v=O6SeD1xE7NA&ab_channel=VPRecords');
     await musicTxn.wait();
 
+    let musicTxn2 = await musicContract.shazam('https://www.youtube.com/watch?v=gP0I3GgfwGc&ab_channel=VybzKartelVEVO');
+    await musicTxn2.wait();
+
     /*
     * Get Contract balance to see what happened!
     */
