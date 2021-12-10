@@ -7,10 +7,6 @@ import "hardhat/console.sol";
 contract MusicPortal {
 
     uint256 totalShazams;
-
-    /*
-     * We will be using this below to help generate a random number
-     */
     uint256 private seed;
 
     /*
@@ -35,6 +31,12 @@ contract MusicPortal {
      */
     Music[] musics;
 
+    /*
+     * This is an address => uint mapping, meaning I can associate an address with a number!
+     * In this case, I'll be storing the address with the last time the user waved at us.
+     */
+    mapping(address => uint256) public lastShazamedAt;
+
     constructor() payable {
         console.log("I am Music Portal Smart Contract");
 
@@ -44,9 +46,19 @@ contract MusicPortal {
         seed = (block.timestamp + block.difficulty) % 100;
     }
     
-    function shazam( string memory _message) public{
+    function shazam(string memory _message) public{
+        require(
+            lastShazamedAt[msg.sender] + 15 minutes < block.timestamp,
+            "Wait 15 min"
+        );
+        /*
+        *
+        */
+        lastShazamedAt[msg.sender] = block.timestamp;
+
         totalShazams += 1;
-        console.log("%s shazamed!", msg.sender);
+        console.log("%s has shazamed!", msg.sender);
+
         /*
          * This is where I actually store the shazam data in the array.
          */
@@ -57,11 +69,10 @@ contract MusicPortal {
          */
         seed = (block.difficulty + block.timestamp + seed) % 100;
 
-        console.log("Random # generated: %d", seed);
+        // console.log("Random # generated: %d", seed);
 
         if (seed<= 50) {
             console.log("%s won!", msg.sender);
-
             /*
             * The same code we had before to send the prize.
             */
