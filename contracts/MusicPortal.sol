@@ -48,8 +48,8 @@ contract MusicPortal {
     
     function shazam(string memory _message) public{
         require(
-            lastShazamedAt[msg.sender] + 15 minutes < block.timestamp,
-            "Wait 15 min"
+            lastShazamedAt[msg.sender] + 60 seconds < block.timestamp,
+            "Wait 1 minute to shazam again"
         );
         /*
         *
