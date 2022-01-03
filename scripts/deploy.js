@@ -1,7 +1,7 @@
 const main = async () => {
   const musicContractFactory = await hre.ethers.getContractFactory('MusicPortal');
   const musicContract = await musicContractFactory.deploy({
-    value: hre.ethers.utils.parseEther('0.001'),
+    value: hre.ethers.utils.parseEther('0.0001'),
   })
 
   await musicContract.deployed();
